@@ -1,0 +1,10 @@
+cd Desktop/RNdemo
+git init
+git status
+git add -A(choose which documents you want to upload)
+git status
+git commit -m "Initial Commit"
+git remote add originhttps://github.com/boiledFisher/react-demos-collection.git //加入远程仓库
+git push -u origin master
+输入github账号密码
+刷新github项目，即已上传
