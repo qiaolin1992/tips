@@ -1,0 +1,15 @@
+1: use vgg obtain the features (not include the fc layers)
+2: contribute my own fc layers
+3:use the features train the fc model
+4:conbine the vgg and fc model
+5: use data train the mix model
+6: when use the mix model extract the features, we need to split the mix model
+for example:
+model=load_model("C:/lq/code/deep-fuzzy-tree-cifar/model/allmodel.best.hdf5")#mix model
+print(model.summary())
+print(model.get_layer('sequential_1').summary())
+#preds=model.predict(x_test)
+print(model.get_layer('block5_pool').output.shape)
+print(model.get_layer('sequential_1').get_layer('flatten_1').input.shape)
+feature_cnn=Model(inputs=model.input,outputs=model.get_layer('block5_pool').output)
+feature_fc=Model(inputs=model.get_layer('sequential_1').get_layer('flatten_1').input,outputs=model.get_layer('sequential_1').get_layer('fc2').output)
